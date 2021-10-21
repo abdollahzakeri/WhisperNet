@@ -21,4 +21,8 @@ The results of these 2 branches are concatenated and processed further to produc
 The Siamese network uses the triplet loss function :
 `L(A,P,N)=max⁡(0,D(A,P)-D(A,N)+margin)`
 where `D(x,y)` is the distance metric used to calculate the distance between x and y. *L2 distance* or *(1 – cosine similarity)* can be used as the distance metric. The margin term represents the minimum required distance between `D(A,P)` and `D(A,N)`. The architecture of the used Siamese network is represented below:
+
 ![siamese](https://github.com/ab2llah/WhisperNet/raw/main/siamese.png "siamese")
+
+The siamese network is consisted of three identical embedding networks which produce representation vectors for the anchor, positive, and negative input data. During the process of training, the network learns to maximize the distance between the anchor and negative embeddings while minimizing the distance between anchor and positive embeddings simultaneously.
+
