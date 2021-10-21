@@ -15,3 +15,10 @@ The sequence of these extracted landmarks are saved accordingly to a TF file to 
 The embedding network takes the cropped lip video along with the corresponding sequence of landmarks as input and outputs an embedding vector. The architecture of the embedding network is represented below:
 ![embedding](https://github.com/ab2llah/WhisperNet/raw/main/embedding.png "embedding")
 The embedding network is consisted of two branches. The right branch extracts features from the input lip video and the right one extracts features from the sequence of lip landmarks. architecture of the left branch is inspired by the LipNet and uses STCNN layers to extract spatio-temporal features from the input video.
+
+The results of these 2 branches are concatenated and processed further to produce the final embedding of the input data.
+## 4. The Siamese Network:
+The Siamese network uses the triplet loss function :
+`L(A,P,N)=max⁡(0,D(A,P)-D(A,N)+margin)`
+where `D(x,y)` is the distance metric used to calculate the distance between x and y. *L2 distance* or *(1 – cosine similarity)* can be used as the distance metric. The margin term represents the minimum required distance between `D(A,P)` and `D(A,N)`. The architecture of the used Siamese network is represented below:
+![siamese](https://github.com/ab2llah/WhisperNet/raw/main/siamese.png "siamese")
