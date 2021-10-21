@@ -8,4 +8,10 @@ As we intend to authenticate the person based on their lip video, we should firs
 
 ![landmarks](https://github.com/ab2llah/WhisperNet/raw/main/cropped_How1.avi.gif "landmarks")
 
-**Note:**
+**Note:** The landmarks are plotted on the input image for clarification and are not fed into the network like this.
+
+The sequence of these extracted landmarks are saved accordingly to a TF file to be used later in the network. Additionally, they were used to crop each frame to the lip ROI.
+## 3. The Embedding Network:
+The embedding network takes the cropped lip video along with the corresponding sequence of landmarks as input and outputs an embedding vector. The architecture of the embedding network is represented below:
+![embedding](https://github.com/ab2llah/WhisperNet/raw/main/embedding.png "embedding")
+The embedding network is consisted of two branches. The right branch extracts features from the input lip video and the right one extracts features from the sequence of lip landmarks. architecture of the left branch is inspired by the LipNet and uses STCNN layers to extract spatio-temporal features from the input video.
